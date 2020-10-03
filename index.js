@@ -20,25 +20,30 @@ prompt.get(['version', 'file'], function (err, userInput) {
     writter(userInput)
 });
 
-function writter(results){
-    
-  fs.readFile('docker.template', function(err, data){
-      if (!err) {
-        // make the buffer into a string
-        var source = data.toString();
-        version = console.read
-        
-        // create and write file
-        fs.writeFile('neewfile.txt', renderToString(source, { version: results.version,file:results.file }), function (err) {
-          if (err) throw err;
-          console.log('File is created successfully.');
-        }); 
+function writter(userInput){
 
-      } else {
-        // handle file read error
-        console.log("Error")
-      }
-    });
+  files.forEach(file => {
+
+    fs.readFile( file.tamplateName, function(err, data){
+        if (!err) {
+          // make the buffer into a string
+          var source = data.toString();
+          version = console.read
+          
+          // create and write file
+          fs.writeFile( file.whereToWrite, renderToString(source, { version: userInput.version, file:userInput.file }), function (err) {
+            if (err) throw err;
+            console.log('File is created successfully.');
+          }); 
+  
+        } else {
+          // handle file read error
+          console.log("Error")
+        }
+      });
+
+  })
+    
 }
 function dataWeWantToWrite(source, data) {
     var template = Handlebars.compile(source);
