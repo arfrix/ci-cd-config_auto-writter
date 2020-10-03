@@ -1,0 +1,14 @@
+image: node:{{version}}
+
+cache:
+  paths:
+  - node_modules/
+
+stages:
+  - test
+
+test_async:
+  script:
+   - npm install
+   - node {{file}}
+
