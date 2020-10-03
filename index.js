@@ -11,7 +11,7 @@ const files = [
   {tamplateName: 'staging-docker-compose.template', whereToWrite: 'docker-deploy/staging/docker-compose.yml'},
   {tamplateName: 'staging-env.template', whereToWrite: 'docker-deploy/staging/env.json'},
   
-  {tamplateName: 'docker.template', whereToWrite: 'Dockerfile'},
+  {tamplateName: 'docker.template', whereToWrite: 'docker-deploy/Dockerfile'},
 ]
 
 prompt.start();
@@ -31,7 +31,7 @@ function writter(userInput){
           version = console.read
           
           // create and write file
-          fs.writeFile( file.whereToWrite, renderToString(source, { version: userInput.version, file:userInput.file }), function (err) {
+          fs.writeFile( file.whereToWrite, dataWeWantToWrite(source, { version: userInput.version, file:userInput.file }), function (err) {
             if (err) throw err;
             console.log('File is created successfully.');
           }); 
