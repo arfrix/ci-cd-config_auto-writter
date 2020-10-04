@@ -5,8 +5,8 @@ stages:
 variables:
     GIT_SUBMODULE_STRATEGY: recursive
     ARTIFACTORY_DOCKER_REGISTRY: docker.artifactory.tapsi.tech
-    REGISTRY_STAGING_IMAGE: $ARTIFACTORY_DOCKER_REGISTRY/{{what_is_project_name_in_staging_image_url}}/staging:$CI_COMMIT_REF_SLUG
-    REGISTRY_PRODUCTION_IMAGE: $ARTIFACTORY_DOCKER_REGISTRY/{{what_is_project_name_in_production_image_url}}/production:$CI_COMMIT_REF_SLUG
+    REGISTRY_STAGING_IMAGE: $ARTIFACTORY_DOCKER_REGISTRY/re/staging:$CI_COMMIT_REF_SLUG
+    REGISTRY_PRODUCTION_IMAGE: $ARTIFACTORY_DOCKER_REGISTRY/errr/production:$CI_COMMIT_REF_SLUG
   
 build-development: 
     stage: build

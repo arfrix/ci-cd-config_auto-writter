@@ -1,15 +1,13 @@
 version: '3.5'
 services:
   share:
-    image: docker.artifactory.tapsi.tech/doroshke/test_staging/staging:development
+    image: docker.artifactory.tapsi.tech/ttt.com/staging:development
     networks:
       - web
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
-      #placement:
-      #  constraints: [node.labels.backoffice == true]
       labels:
         traefik.port: 3000
         traefik.docker.network: "traefik_webgateway"

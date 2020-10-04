@@ -12,6 +12,7 @@ const files = [
   {tamplateName: 'staging-env.template', whereToWrite: 'docker-deploy/staging/env.json'},
   
   {tamplateName: 'docker.template', whereToWrite: 'docker-deploy/Dockerfile'},
+  {tamplateName: 'gitlab-ci.template', whereToWrite: 'docker-deploy/gitlab-ci.yml'},
 ]
 
 prompt.start();
@@ -19,7 +20,9 @@ prompt.get(['what_is_stack_id_of_production_config',
  'what_is_project_name_in_image_url_in_production_docker_compose',
  'what_is_production_env_domain', 'what_is_stack_id_of_staging_config',
  'what_is_project_name_in_image_url_in_staging_docker_compose',
- 'what_is_staging_env_domain'],
+ 'what_is_staging_env_domain',
+'what_is_project_name_in_staging_image_url',
+'what_is_project_name_in_production_image_url'],
   function (err, userInput) {
     if (err) { return onErr(err); }
     writter(userInput)
@@ -70,9 +73,11 @@ function dataWeWantToWrite(source, userInput, file) {
         
       case 'staging-env.template':
         return template({what_is_staging_env_domain: userInput.what_is_staging_env_domain});
+      case 'staging-env.template':
+        return template({what_is_staging_env_domain: userInput.what_is_staging_env_domain});
         
-      case 'docker.template':
-        return template();
+      case 'gitlab-ci.template':
+        return template({what_is_project_name_in_staging_image_url: userInput.what_is_project_name_in_staging_image_url, what_is_project_name_in_production_image_url: userInput.what_is_project_name_in_production_image_url});
         
     
       default:

@@ -2,7 +2,7 @@
     "domain": "http://portainer.docker.webdooz.com",
     "deploy": {
       "endpoint_id": "1",
-      "stack_id": "10000",
+      "stack_id": "123",
       "path_file": "docker-compose.yml",
       "path_json": "env.json"
     }
