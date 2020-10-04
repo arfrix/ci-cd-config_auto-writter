@@ -1,0 +1,9 @@
+{
+  "Env": [
+    {
+      "name": "DOMAIN",
+      "value": "{{what_is_production_env_domain}}"
+    }
+  ],
+  "Prune": true
+}

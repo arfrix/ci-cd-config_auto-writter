@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  share:
+    image: docker.artifactory.tapsi.tech/doroshke/{{what_is_project_name_in_image_url_in_staging_docker_compose}}/staging:development
+    networks:
+      - web
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      labels:
+        traefik.port: 3000
+        traefik.docker.network: "traefik_webgateway"
+        traefik.frontend.rule: "Host:${DOMAIN}"
+        traefik.frontend.redirect.entryPoint: "https"
+
+networks:
+  web:
+    external: true
+    name: traefik_webgateway

@@ -1,0 +1,9 @@
+{
+    "domain": "http://portainer.docker.webdooz.com",
+    "deploy": {
+      "endpoint_id": "1",
+      "stack_id": "{{what_is_stack_id_of_staging_config}}",
+      "path_file": "docker-compose.yml",
+      "path_json": "env.json"
+    }
+}

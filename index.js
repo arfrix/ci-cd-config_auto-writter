@@ -15,7 +15,12 @@ const files = [
 ]
 
 prompt.start();
-prompt.get(['version', 'file'], function (err, userInput) {
+prompt.get(['what_is_stack_id_of_production_config',
+ 'what_is_project_name_in_image_url_in_production_docker_compose',
+ 'what_is_production_env_domain', 'what_is_stack_id_of_staging_config',
+ 'what_is_project_name_in_image_url_in_staging_docker_compose',
+ 'what_is_staging_env_domain'],
+  function (err, userInput) {
     if (err) { return onErr(err); }
     writter(userInput)
 });
@@ -31,7 +36,7 @@ function writter(userInput){
           version = console.read
           
           // create and write file
-          fs.writeFile( file.whereToWrite, dataWeWantToWrite(source, { version: userInput.version, file:userInput.file }), function (err) {
+          fs.writeFile( file.whereToWrite, dataWeWantToWrite(source, userInput, file), function (err) {
             if (err) throw err;
             console.log('File is created successfully.');
           }); 
@@ -45,9 +50,35 @@ function writter(userInput){
   })
     
 }
-function dataWeWantToWrite(source, data) {
+function dataWeWantToWrite(source, userInput, file) {
     var template = Handlebars.compile(source);
-    var outputString = template(data);
-    return outputString;
+    switch (file.tamplateName) {
+      case 'production-config.template':
+        return template({what_is_stack_id_of_production_config: userInput.what_is_stack_id_of_production_config});
+        
+      case 'production-docker-compose.template':
+        return template({what_is_project_name_in_image_url_in_production_docker_compose: userInput.what_is_project_name_in_image_url_in_production_docker_compose});
+        
+      case 'production-env.template':
+        return template({what_is_production_env_domain: userInput.what_is_production_env_domain});
+        
+      case 'staging-config.template':
+        return template({what_is_stack_id_of_staging_config: userInput.what_is_stack_id_of_staging_config});
+        
+      case 'staging-docker-compose.template':
+        return template({what_is_project_name_in_image_url_in_staging_docker_compose: userInput.what_is_project_name_in_image_url_in_staging_docker_compose});
+        
+      case 'staging-env.template':
+        return template({what_is_staging_env_domain: userInput.what_is_staging_env_domain});
+        
+      case 'docker.template':
+        return template();
+        
+    
+      default:
+        break;
+    }
+     
+    return null;
 }
     
