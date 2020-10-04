@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   share:
-    image: docker.artifactory.tapsi.tech/doroshke/{{what_is_project_name_in_image_url_in_staging_docker_compose}}/staging:development
+    image: docker.artifactory.tapsi.tech/{{what_is_project_name_in_image_url_in_staging_docker_compose}}/staging:development
     networks:
       - web
     deploy:
