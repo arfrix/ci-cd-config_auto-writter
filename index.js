@@ -73,12 +73,15 @@ function dataWeWantToWrite(source, userInput, file) {
         
       case 'staging-env.template':
         return template({what_is_staging_env_domain: userInput.what_is_staging_env_domain});
+
       case 'staging-env.template':
         return template({what_is_staging_env_domain: userInput.what_is_staging_env_domain});
         
       case 'gitlab-ci.template':
         return template({what_is_project_name_in_staging_image_url: userInput.what_is_project_name_in_staging_image_url, what_is_project_name_in_production_image_url: userInput.what_is_project_name_in_production_image_url});
         
+      case 'docker.template':
+        return template();
     
       default:
         break;

@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   share:
-    image: docker.artifactory.tapsi.tech/tt/production:production
+    image: docker.artifactory.tapsi.tech//production:production
     networks:
       - web
     deploy:
