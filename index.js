@@ -12,7 +12,7 @@ const files = [
   {tamplateName: 'staging-env.template', whereToWrite: 'docker-deploy/staging/env.json'},
   
   {tamplateName: 'docker.template', whereToWrite: 'docker-deploy/Dockerfile'},
-  {tamplateName: 'gitlab-ci.template', whereToWrite: 'docker-deploy/gitlab-ci.yml'},
+  {tamplateName: 'gitlab-ci.template', whereToWrite: 'docker-deploy/.gitlab-ci.yml'},
 ]
 
 prompt.start();
