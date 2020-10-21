@@ -22,7 +22,9 @@ prompt.get(['what_is_stack_id_of_production_config',
  'what_is_project_name_in_image_url_in_staging_docker_compose',
  'what_is_staging_env_domain',
 'what_is_project_name_in_staging_image_url',
-'what_is_project_name_in_production_image_url'],
+'what_is_project_name_in_production_image_url',
+'staging_docker_compose_service_name',
+'production_docker_compose_service_name'],
   function (err, userInput) {
     if (err) { return onErr(err); }
     writter(userInput)
@@ -60,7 +62,7 @@ function dataWeWantToWrite(source, userInput, file) {
         return template({what_is_stack_id_of_production_config: userInput.what_is_stack_id_of_production_config});
         
       case 'production-docker-compose.template':
-        return template({what_is_project_name_in_image_url_in_production_docker_compose: userInput.what_is_project_name_in_image_url_in_production_docker_compose});
+        return template({what_is_project_name_in_image_url_in_production_docker_compose: userInput.what_is_project_name_in_image_url_in_production_docker_compose, production_docker_compose_service_name: userInput.production_docker_compose_service_name});
         
       case 'production-env.template':
         return template({what_is_production_env_domain: userInput.what_is_production_env_domain});
@@ -69,7 +71,7 @@ function dataWeWantToWrite(source, userInput, file) {
         return template({what_is_stack_id_of_staging_config: userInput.what_is_stack_id_of_staging_config});
         
       case 'staging-docker-compose.template':
-        return template({what_is_project_name_in_image_url_in_staging_docker_compose: userInput.what_is_project_name_in_image_url_in_staging_docker_compose});
+        return template({what_is_project_name_in_image_url_in_staging_docker_compose: userInput.what_is_project_name_in_image_url_in_staging_docker_compose, staging_docker_compose_service_name: userInput.staging_docker_compose_service_name});
         
       case 'staging-env.template':
         return template({what_is_staging_env_domain: userInput.what_is_staging_env_domain});

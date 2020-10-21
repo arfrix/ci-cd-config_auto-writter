@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  share:
+  {{staging_docker_compose_service_name}}:
     image: docker.artifactory.tapsi.tech/{{what_is_project_name_in_image_url_in_staging_docker_compose}}/staging:development
     networks:
       - web
@@ -9,7 +9,7 @@ services:
       restart_policy:
         condition: on-failure
       labels:
-        traefik.port: 3000
+        traefik.port: 5000
         traefik.docker.network: "traefik_webgateway"
         traefik.frontend.rule: "Host:${DOMAIN}"
         traefik.frontend.redirect.entryPoint: "https"
